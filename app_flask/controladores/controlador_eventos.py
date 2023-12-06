@@ -50,5 +50,5 @@ def despliega_formulario_editar_evento(id):
 def get_categorias(id):
     # aca va la logica de buscar las categorias en la base de datos, con la id que le pasamos
     query = """SELECT * FROM categorias WHERE id_tipo = id_categoria"""
-    return categorias[id]
+    return categoria[id]
 

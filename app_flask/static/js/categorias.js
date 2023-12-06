@@ -1,17 +1,18 @@
+console.log('hola')
 /*botones de inicio y cerrar sesion */
-function over(element){
+function over(element) {
     element.style.backgroundColor = "#3461e9";
     element.style.color = "#f0f0f0"
 }
-function out(element){
+function out(element) {
     element.style.backgroundColor = "#f0f0f0"
     element.style.color = "black"
 }
-function overlog(element){
+function overlog(element) {
     element.style.backgroundColor = "#cb272c";
     element.style.color = "#f0f0f0"
 }
-function outlog(element){
+function outlog(element) {
     element.style.backgroundColor = "#f0f0f0"
     element.style.color = "black"
 }
@@ -30,9 +31,30 @@ next.addEventListener('click', () => {
 })
 
 /*recuadro seccion deportes */
-function overdeportes(element){
+function overdeportes(element) {
     element.style.color = "#f0f0f0"
 }
-function outdeportes(element){
+function outdeportes(element) {
     element.style.color = "black"
+}
+
+function traerCategorias(event) {
+    fetch(`/categorias/${ event.target.value }`) //LO FUE A BUSCAR A LA RUTA
+        .then((res) => {
+            //Lo recibio
+            return res.json();
+        })
+        .then((datos) => {
+            //LO PROCESÓ
+            //hago algo con los datos
+            var selectCategorias = document.getElementById("categorias");
+            selectCategorias.innerHTML = "";
+            console.log(datos);
+            datos.forEach((categoria) => {
+                var content = `<option value="${categoria.id}">${categoria.nombre}</option>`;
+                selectCategorias.innerHTML += content;
+            });
+
+
+        });
 }
